@@ -1,2 +1,10 @@
-# devops-iitu-mlapp
-Diploma project scalable infrastructure with implemented machine learning application as a proof-of-concept
+# ML-архитектура с XGBoost (3 станции Алматы + PostgreSQL)
+
+В этом репозитории собраны все компоненты для простейшей ML-системы, которая:
+
+1. Скачивает почасовые метеоданные за период 2000–2024 гг. для трёх ближайших станций Алматы (скрипт `collector/collector.py`).
+2. Сохраняет эти данные в PostgreSQL (контейнер из `postgres/docker-compose.yml`).
+3. Data-Splitter (FastAPI) создаёт задачи для каждой станции в таблице `job_metadata`.
+4. Worker (FastAPI) берёт задачу, обучает XGBoost на данных одной станции, сохраняет бинарный дамп модели в `model_checkpoints`.
+5. Aggregator (FastAPI) объединяет все чек-пойнты моделей в один pickle-список и сохраняет в `final_models`.
+6. Predictor (FastAPI) загружает агрегированный список моделей и на `/predict` отдаёт усреднённый прогноз.

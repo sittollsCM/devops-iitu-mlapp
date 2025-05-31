@@ -1,6 +1,3 @@
-# devops-iitu-mlapp
-Diploma project scalable infrastructure with implemented machine learning application as a proof-of-concept
-
 # ML-архитектура с XGBoost (3 станции Алматы + PostgreSQL)
 
 В этом репозитории собраны все компоненты для простейшей ML-системы, которая:
